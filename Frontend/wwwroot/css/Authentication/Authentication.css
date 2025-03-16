@@ -26,6 +26,7 @@
 }
 
     .form-group label {
+        font-size: 16px;
         font-weight: bold;
         display: block;
         margin-bottom: 5px;
@@ -73,6 +74,7 @@ button {
 .form-container p {
     margin-top: 15px;
     font-size: 14px;
+    color: black;
 }
 
 .form-container a {

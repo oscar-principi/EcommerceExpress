@@ -137,8 +137,10 @@ namespace Authentication.API.Services
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, usuario.UserName)
+                new Claim(ClaimTypes.Name, usuario.UserName), 
+                new Claim(ClaimTypes.GivenName, usuario.FirstName) 
             };
+
 
             var roles = _userManager.GetRolesAsync(usuario).Result;
 

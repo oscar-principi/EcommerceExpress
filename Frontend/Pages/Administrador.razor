@@ -1,9 +1,13 @@
-﻿@page "/admin"
+﻿@page "/administrador"
 @using Microsoft.AspNetCore.Authorization
-@* @attribute [Authorize] *@
-
+@attribute [Authorize(Roles = "Administrador")]
 
 <h3 class="form-container">Panel de Administración</h3>
 
+<div class="admin-content">
+    <p>Bienvenido al panel de administración, solo accesible para administradores.</p>
+</div>
 
-
+@code {
+    // Puedes agregar lógica adicional aquí si lo necesitas
+}

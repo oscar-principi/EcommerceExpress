@@ -1,0 +1,45 @@
+﻿@page "/contacto"
+
+<h3 class="contact-container">Contacto</h3>
+
+<div class="contact-container">
+    <p>Si tienes alguna consulta, no dudes en enviarnos un mensaje. Te responderemos lo antes posible.</p>
+
+    <EditForm Model="@contacto" OnValidSubmit="EnviarMensaje">
+        <div class="contact-form">
+            <label>Nombre:</label>
+            <InputText @bind-Value="contacto.Nombre" required />
+
+            <label>Email:</label>
+            <InputText @bind-Value="contacto.Email" type="email" required />
+
+            <label>Mensaje:</label>
+            <InputTextArea @bind-Value="contacto.Mensaje" required />
+
+            <button type="submit" class="button">Enviar</button>
+        </div>
+    </EditForm>
+
+    @if (mensajeEnviado)
+    {
+        <p style="color: green; text-align: center;">¡Mensaje enviado con éxito!</p>
+    }
+</div>
+
+@code {
+    private ContactoModel contacto = new ContactoModel();
+    private bool mensajeEnviado = false;
+
+    private void EnviarMensaje()
+    {
+        mensajeEnviado = true;
+        contacto = new ContactoModel(); // Reiniciar el formulario
+    }
+
+    private class ContactoModel
+    {
+        public string Nombre { get; set; }
+        public string Email { get; set; }
+        public string Mensaje { get; set; }
+    }
+}

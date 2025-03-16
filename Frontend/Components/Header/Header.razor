@@ -1,5 +1,6 @@
 ﻿@using Frontend.Services
 @using Microsoft.AspNetCore.Components.Authorization
+@using System.Security.Claims
 @inject AuthenticationService _authenticationService
 @inject CustomAuthenticationStateProvider _customAuthenticationStateProvider
 @inject NavigationManager _navigation
@@ -23,7 +24,7 @@
 
         <AuthorizeView>
             <Authorized>
-                <span class="nav-user-name">Hola, @context.User.Identity.Name</span>
+                <span class="nav-user-name">@context.User.FindFirst(ClaimTypes.GivenName)?.Value</span>
                 <a href="/" @onclick="LogoutAsync">Cerrar sesión</a>
             </Authorized>
         </AuthorizeView>

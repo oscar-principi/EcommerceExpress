@@ -1,5 +1,28 @@
-﻿.error-message {
-    color: red;
-    font-size: 0.9rem;
-    margin-top: 5px;
+﻿/* Estilos comunes para las páginas de error */
+.form-container {
+    text-align: center;
+    margin-top: 70px;
+    font-size: 2rem;
+    color: #d9534f; /* Rojo para indicar error */
+}
+
+.error-message {
+    text-align: center;
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 5px;
+    font-size: 1.25rem;
+}
+
+/* Estilos adicionales para la página de error de Login */
+.login-error-page .form-container {
+    font-size: 2.5rem;
+}
+
+/* Estilos adicionales para la página de error de Registro */
+.register-error-page .form-container {
+    font-size: 2.5rem;
 }
