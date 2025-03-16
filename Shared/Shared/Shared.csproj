@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackageId>Ecommerce.Shared</PackageId>
+    <Version>1.0.32</Version> 
+    <Authors>Oscar-Principi</Authors>
+    <Description>Paquete Nuguet Shared para el proyecto Ecommerce</Description>
+</PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.2" />
+  </ItemGroup>
+
+</Project>

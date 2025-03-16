@@ -1,0 +1,39 @@
+﻿@using Frontend.Services
+@using Microsoft.AspNetCore.Components.Authorization
+@inject AuthenticationService _authenticationService
+@inject CustomAuthenticationStateProvider _customAuthenticationStateProvider
+@inject NavigationManager _navigation
+
+<div class="top-row">
+    <div class="title">
+        <nav class="nav-buttons">
+            <h1>
+                <a href="/">Express</a>
+            </h1>
+        </nav>
+    </div>
+
+    <nav class="nav-buttons">
+        <AuthorizeView>
+            <NotAuthorized>
+                <a href="/ingreso">Ingresar</a>
+                <a href="/registro">Registrarse</a>
+            </NotAuthorized>
+        </AuthorizeView>
+
+        <AuthorizeView>
+            <Authorized>
+                <span class="nav-user-name">Hola, @context.User.Identity.Name</span>
+                <a href="/" @onclick="LogoutAsync">Cerrar sesión</a>
+            </Authorized>
+        </AuthorizeView>
+    </nav>
+</div>
+
+@code {
+    public async Task LogoutAsync()
+    {
+        var result = _customAuthenticationStateProvider.MarkUserAsLoggedOutAsync();
+        _navigation.NavigateTo("/ingreso");
+    }
+}

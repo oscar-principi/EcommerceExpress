@@ -1,0 +1,101 @@
+﻿/* Estilos generales para centrar el formulario */
+.form-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    margin: 70px auto;
+    text-align: center;
+}
+
+    /* Estilos para los títulos */
+    .form-container h2 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #333;
+    }
+
+/* Contenedor de cada campo del formulario */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+    .form-group label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+        box-sizing: border-box;
+    }
+
+/*Usuario logueado*/
+/* Estilo para el nombre de usuario en el header */
+.nav-user-name {
+    font-weight: bold;
+    color: #ffcc00;
+    margin-left: 15px;
+}
+
+
+
+/* Botón principal */
+button {
+    background: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    width: 100%;
+    transition: background 0.3s;
+}
+
+    button:hover {
+        background: #ffcc00;
+    }
+
+/* Enlace para redirigir entre login y register */
+.form-container p {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.form-container a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+    .form-container a:hover {
+        text-decoration: underline;
+    }
+
+/* Estilo para mensajes de validación */
+.validation-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .form-container {
+        width: 90%;
+        padding: 15px;
+    }
+}

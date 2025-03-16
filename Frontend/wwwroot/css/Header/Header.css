@@ -1,0 +1,37 @@
+﻿.top-row {
+    background: #333;
+    padding: 0;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    padding: 0 20px;
+}
+
+.title  {
+    color: #ffcc00;
+    margin: 0;
+    font-size: 10px;
+}
+
+.nav-buttons {
+    display: flex; 
+    gap: 20px;
+}
+
+    .nav-buttons a {
+        color: #ffcc00;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s;
+    }
+
+        .nav-buttons a:hover {
+            color: white; 
+        }

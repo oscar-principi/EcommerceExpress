@@ -1,0 +1,17 @@
+[
+  {
+    "Name": "Autenticacionl",
+    "Projects": [
+      {
+        "Path": "Public\\Gateway.API\\Gateway.API.csproj",
+        "Action": "Start",
+        "DebugTarget": "https"
+      },
+      {
+        "Path": "Private\\Authentication.API\\Authentication.API.csproj",
+        "Action": "Start",
+        "DebugTarget": "https"
+      }
+    ]
+  }
+]

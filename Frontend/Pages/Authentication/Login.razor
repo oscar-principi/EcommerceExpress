@@ -1,0 +1,49 @@
+﻿@page "/ingreso"
+@using Frontend.Services
+@using Shared.DTOs.Autenticacion
+@inject AuthenticationService _authenticationService
+@inject NavigationManager _navigation
+
+<PageTitle>Ingreso</PageTitle>
+
+<div class="form-container">
+    <h2>Ingreso</h2>
+
+    <EditForm Model="credenciales" OnValidSubmit="HandleLogin">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <InputText id="email" class="form-control" @bind-Value="credenciales.Email" />
+        </div>
+
+        <div class="form-group">
+            <label for="password">Contraseña</label>
+            <InputText id="password" class="form-control" type="password" @bind-Value="credenciales.Password" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Ingresar</button>
+    </EditForm>
+
+    <p>¿No tienes una cuenta? <NavLink href="/register">Regístrate aquí</NavLink></p>
+</div>
+
+@code {
+    private CredencialesDTO credenciales = new CredencialesDTO();
+
+    private async Task HandleLogin()
+    {
+        var result = await _authenticationService.LoginAsync(credenciales);
+
+        if (result.IsSuccess)
+        {
+            _navigation.NavigateTo("/ingreso/exitoso");
+        }
+        else
+        {
+            _navigation.NavigateTo("/ingreso/fallido");
+        }
+    }
+}
+

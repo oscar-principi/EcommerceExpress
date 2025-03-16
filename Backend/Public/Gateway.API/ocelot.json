@@ -1,0 +1,136 @@
+{
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:7287",
+    "CorsOptions": {
+      "AllowAnyOrigin": true,
+      "AllowAnyMethod": true,
+      "AllowAnyHeader": true,
+      "AllowCredentials": true
+    }
+  },
+    "Routes": [
+      {
+        "DownstreamPathTemplate": "/api/authentication/{everything}",
+        "UpstreamPathTemplate": "/api/gateway/authentication/{everything}",
+        "DownstreamScheme": "https",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 7187
+          }
+        ],
+        "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+        "Priority": 1,
+        "AuthenticationOptions": {
+          "AllowAnonymous": true
+        },
+        "RateLimitOptions": {
+          "EnableRateLimiting": true,
+          "Period": "1m",
+          "PeriodTimespan": 10,
+          "Limit": 3,
+          "QueueLimit": 0
+        },
+        "FileCacheOptions": {
+          "TtlSeconds": 10
+        }
+      },
+      {
+        "DownstreamPathTemplate": "/api/usuario/{everything}",
+        "UpstreamPathTemplate": "/api/gateway/usuario/everything}",
+        "DownstreamScheme": "https",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 7038
+          }
+        ],
+        "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+        "Priority": 1,
+        "RateLimitOptions": {
+          "EnableRateLimiting": true,
+          "Period": "1m",
+          "PeriodTimespan": 10,
+          "Limit": 3,
+          "QueueLimit": 0
+        }
+      },
+      {
+        "DownstreamPathTemplate": "/api/catalogo/{everything}",
+        "UpstreamPathTemplate": "/api/gateway/catalogo/{everything}",
+        "DownstreamScheme": "https",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 7068
+          }
+        ],
+        "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+        "Priority": 1,
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "Bearer",
+          "AllowAnonymous": false,
+          "AllowedScopes": [ "read", "write" ]
+        },
+        "RateLimitOptions": {
+          "EnableRateLimiting": true,
+          "Period": "1m",
+          "PeriodTimespan": 10,
+          "Limit": 3,
+          "QueueLimit": 0
+        }
+      },
+      {
+        "DownstreamPathTemplate": "/api/pedidos/{everything}",
+        "UpstreamPathTemplate": "/api/gateway/pedidos/{everything}",
+        "DownstreamScheme": "https",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 7211
+          }
+        ],
+        "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+        "Priority": 1,
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "Bearer",
+          "AllowAnonymous": false,
+          "AllowedScopes": [ "read", "write" ]
+        },
+        "RateLimitOptions": {
+          "EnableRateLimiting": true,
+          "ClientWhitelist": [],
+          "ClientBlacklist": [],
+          "Period": "1m",
+          "PeriodTimespan": 10,
+          "Limit": 3,
+          "QueueLimit": 0
+        }
+      },
+      {
+        "DownstreamPathTemplate": "/api/carrito/{everything}",
+        "UpstreamPathTemplate": "/api/gateway/carrito/{everything}",
+        "DownstreamScheme": "https",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "localhost",
+            "Port": 7219
+          }
+        ],
+        "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+        "Priority": 1,
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "Bearer",
+          "AllowAnonymous": false,
+          "AllowedScopes": [ "read", "write" ]
+        },
+        "RateLimitOptions": {
+          "EnableRateLimiting": true,
+          "Period": "1m",
+          "PeriodTimespan": 10,
+          "Limit": 3,
+          "QueueLimit": 0
+        }
+      }
+    ]
+}
