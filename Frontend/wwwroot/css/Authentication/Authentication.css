@@ -8,16 +8,25 @@
     max-width: 400px;
     display: flex;
     flex-direction: column;
-    margin: 70px auto;
+    margin: 80px auto;
     text-align: center;
 }
 
-    /* Estilos para los títulos */
-    .form-container h2 {
-        margin-bottom: 20px;
-        font-size: 24px;
-        color: #333;
-    }
+
+/* Contenedor específico para el título */
+.title-container {
+    background: #ffcc00; /* Fondo del bloque del título */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; 
+}
+
+.form-container h2 {
+    margin: 0;
+    font-size: 24px;
+    color: white;
+}
 
 /* Contenedor de cada campo del formulario */
 .form-group {
@@ -33,24 +42,32 @@
         color: #555;
     }
 
+    /* Aplicamos los mismos estilos de .search-input */
     .form-group input {
         width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
+        padding: 5px 10px;
+        margin-top: 10px;
         font-size: 14px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        height: 30px;
         box-sizing: border-box;
     }
 
-/*Usuario logueado*/
+        /* Efecto cuando el input está en foco */
+        .form-group input:focus {
+            outline: none;
+            border: 1px solid #ffcc00;
+            box-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
+        }
+
+/* Usuario logueado */
 /* Estilo para el nombre de usuario en el header */
 .nav-user-name {
     font-weight: bold;
     color: #ffcc00;
     margin-left: 15px;
 }
-
-
 
 /* Botón principal */
 button {
@@ -86,13 +103,6 @@ button {
     .form-container a:hover {
         text-decoration: underline;
     }
-
-/* Estilo para mensajes de validación */
-.validation-message {
-    color: red;
-    font-size: 12px;
-    margin-top: 5px;
-}
 
 /* Responsive */
 @media (max-width: 480px) {

@@ -33,41 +33,59 @@
         color: #444;
     }
 
-    .contact-form input,
-    .contact-form textarea {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 16px;
+/* Aplicamos el mismo estilo de los inputs de la barra de búsqueda */
+.input-style {
+    width: 100%;
+    padding: 5px 10px;
+    margin-top: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    height: 30px;
+    box-sizing: border-box;
+}
+
+    .input-style:focus {
+        outline: none;
+        border: 1px solid #ffcc00;
+        box-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
     }
 
-    .contact-form textarea {
-        resize: vertical;
-        height: 120px;
-    }
+/* Ajuste para textarea */
+.textarea-style {
+    height: 120px;
+    resize: vertical;
+}
 
-    /* Estilos para el botón dentro del formulario de contacto */
-    .contact-form button {
-        background-color: #007bff;
-        color: white;
-        border: none;
-        padding: 10px 15px;
-        font-size: 16px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
+/* Botón del formulario */
+.contact-form button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    width: 100%;
+    transition: background 0.3s;
+}
 
-        .contact-form button:hover {
-            background-color: #0056b3;
-        }
+    .contact-form button:hover {
+        background-color: #ffcc00;
+    }
 
 /* Estilos para el mensaje de éxito */
-.contact-container p.success-message {
+.success-message {
     color: green;
     text-align: center;
     margin-top: 20px;
 }
 
-/* Si deseas quitar la regla global para los botones */
+/* Responsive */
+@media (max-width: 480px) {
+    .contact-container {
+        width: 90%;
+        padding: 15px;
+    }
+}

@@ -3,10 +3,10 @@
 @inject AuthenticationService _authenticationService
 @inject NavigationManager _navigation
 
-<PageTitle>Registro</PageTitle>
-
 <div class="form-container">
-    <h2>Registro</h2>
+    <div class="title-container">
+        <h2>Registro</h2>
+    </div>
 
     <EditForm Model="usuario" OnValidSubmit="HandleRegister">
         <DataAnnotationsValidator />

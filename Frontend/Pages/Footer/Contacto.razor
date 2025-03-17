@@ -8,13 +8,13 @@
     <EditForm Model="@contacto" OnValidSubmit="EnviarMensaje">
         <div class="contact-form">
             <label>Nombre:</label>
-            <InputText @bind-Value="contacto.Nombre" required />
+            <InputText @bind-Value="contacto.Nombre" class="input-style" required />
 
             <label>Email:</label>
-            <InputText @bind-Value="contacto.Email" type="email" required />
+            <InputText @bind-Value="contacto.Email" type="email" class="input-style" required />
 
             <label>Mensaje:</label>
-            <InputTextArea @bind-Value="contacto.Mensaje" required />
+            <InputTextArea @bind-Value="contacto.Mensaje" class="input-style textarea-style" required />
 
             <button type="submit" class="button">Enviar</button>
         </div>
@@ -22,7 +22,7 @@
 
     @if (mensajeEnviado)
     {
-        <p style="color: green; text-align: center;">¡Mensaje enviado con éxito!</p>
+        <p class="success-message">¡Mensaje enviado con éxito!</p>
     }
 </div>
 

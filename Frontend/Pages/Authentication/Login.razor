@@ -4,10 +4,10 @@
 @inject AuthenticationService _authenticationService
 @inject NavigationManager _navigation
 
-<PageTitle>Ingreso</PageTitle>
-
 <div class="form-container">
-    <h2>Ingreso</h2>
+    <div class="title-container">
+        <h2>Ingreso</h2>
+    </div>
 
     <EditForm Model="credenciales" OnValidSubmit="HandleLogin">
         <DataAnnotationsValidator />

@@ -21,6 +21,7 @@
     <Folder Include="Components\Body\" />
     <Folder Include="Pages\Catalogo\" />
     <Folder Include="wwwroot\css\Body\" />
+    <Folder Include="wwwroot\Image\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -9,9 +9,15 @@
     <div class="title">
         <nav class="nav-buttons">
             <h1>
+                <img src="/Image/favicon.png" alt="Logo" />
                 <a href="/">Express</a>
             </h1>
         </nav>
+    </div>
+
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="Buscar..." @bind="searchQuery" />
+        <button class="search-button" @onclick="Search">Buscar</button>
     </div>
 
     <nav class="nav-buttons">
@@ -28,13 +34,23 @@
                 <a href="/" @onclick="LogoutAsync">Cerrar sesión</a>
             </Authorized>
         </AuthorizeView>
+
     </nav>
 </div>
 
 @code {
+    private string searchQuery = string.Empty;
+
     public async Task LogoutAsync()
     {
         var result = _customAuthenticationStateProvider.MarkUserAsLoggedOutAsync();
         _navigation.NavigateTo("/ingreso");
     }
+
+    private void Search()
+    {
+        // Lógica de búsqueda
+        Console.WriteLine($"Buscando: {searchQuery}");
+    }
 }
+
