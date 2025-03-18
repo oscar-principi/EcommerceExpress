@@ -1,7 +1,7 @@
 ﻿@using Frontend.Services
+@using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.Components.Authorization
 @using System.Security.Claims
-@inject AuthenticationService _authenticationService
 @inject CustomAuthenticationStateProvider _customAuthenticationStateProvider
 @inject NavigationManager _navigation
 
@@ -26,11 +26,8 @@
                 <a href="/ingreso">Ingresar</a>
                 <a href="/registro">Registrarse</a>
             </NotAuthorized>
-        </AuthorizeView>
-
-        <AuthorizeView>
             <Authorized>
-                <span class="nav-user-name">@context.User.FindFirst(ClaimTypes.GivenName)?.Value</span>
+                <a class="nav-user-name" href="/perfil">@userName</a> 
                 <a href="/" @onclick="LogoutAsync">Cerrar sesión</a>
             </Authorized>
         </AuthorizeView>
@@ -39,12 +36,51 @@
 </div>
 
 @code {
+    private string? userName;
+    private bool isAuthenticated;
+    private bool _isUpdatingUserInfo = false;
+
     private string searchQuery = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _customAuthenticationStateProvider.AuthenticationStateChanged += OnAuthenticationStateChanged;
+        await UpdateUserInfo();
+    }
+
+    private async void OnAuthenticationStateChanged(Task<AuthenticationState> task)
+    {
+        await UpdateUserInfo();
+        StateHasChanged();
+    }
+
+    private async Task UpdateUserInfo()
+    {
+        if (_isUpdatingUserInfo) return; 
+        _isUpdatingUserInfo = true;
+
+        try
+        {
+            Console.WriteLine("Actualizando información del usuario...");
+            var authState = await _customAuthenticationStateProvider.GetAuthenticationStateAsync();
+            var user = authState.User;
+
+            isAuthenticated = user.Identity?.IsAuthenticated == true;
+            userName = isAuthenticated ? user.FindFirst(ClaimTypes.GivenName)?.Value ?? "Usuario" : string.Empty;
+        }
+        finally
+        {
+            _isUpdatingUserInfo = false;
+        }
+    }
 
     public async Task LogoutAsync()
     {
-        var result = _customAuthenticationStateProvider.MarkUserAsLoggedOutAsync();
+        await _customAuthenticationStateProvider.MarkUserAsLoggedOutAsync();
         _navigation.NavigateTo("/ingreso");
+        
+        await UpdateUserInfo();
+        StateHasChanged();
     }
 
     private void Search()
@@ -52,5 +88,9 @@
         // Lógica de búsqueda
         Console.WriteLine($"Buscando: {searchQuery}");
     }
-}
 
+    public void Dispose()
+    {
+        _customAuthenticationStateProvider.AuthenticationStateChanged -= OnAuthenticationStateChanged;
+    }
+}

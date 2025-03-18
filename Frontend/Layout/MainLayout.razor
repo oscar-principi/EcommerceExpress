@@ -1,5 +1,11 @@
 ﻿@inherits LayoutComponentBase
 
+@using Frontend.Services
+@using Microsoft.AspNetCore.Components.Authorization
+@using System.Security.Claims
+
+@inject NavigationManager _navigation
+
 <Header />
 <div class="page">
     <main class="main-container">
@@ -10,6 +16,6 @@
 </div>
 <Footer />
 
-@code{
+@code {
 
 }

@@ -30,9 +30,6 @@
           "PeriodTimespan": 10,
           "Limit": 3,
           "QueueLimit": 0
-        },
-        "FileCacheOptions": {
-          "TtlSeconds": 10
         }
       },
       {

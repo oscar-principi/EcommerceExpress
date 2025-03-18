@@ -9,13 +9,13 @@ namespace Authentication.API.Infrastructure.Data.Seeders
     {
         private readonly UserManager<Usuario> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-        private readonly IConfiguration _configuration; // Inyectamos IConfiguration
+        private readonly IConfiguration _configuration; 
 
         public DataSeeder(UserManager<Usuario> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration)
         {
             _userManager = userManager;
             _roleManager = roleManager;
-            _configuration = configuration; // Asignamos la configuración
+            _configuration = configuration; 
         }
 
         public async Task SeedAsync()
@@ -30,11 +30,6 @@ namespace Authentication.API.Infrastructure.Data.Seeders
                 await _roleManager.CreateAsync(new IdentityRole("Usuario"));
             }
 
-            if (!await _roleManager.RoleExistsAsync("Invitado"))
-            {
-                await _roleManager.CreateAsync(new IdentityRole("Invitado"));
-            }
-
 
             // Leer el administrador desde la configuración
             var adminEmail = _configuration["Admin:Email"];
@@ -47,6 +42,7 @@ namespace Authentication.API.Infrastructure.Data.Seeders
             {
                 var user = new Usuario
                 {
+                    UserName = adminEmail,
                     FirstName = "admin",
                     LastName = "admin",
                     Email = adminEmail

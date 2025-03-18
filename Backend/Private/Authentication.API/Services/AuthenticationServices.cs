@@ -21,16 +21,14 @@ namespace Authentication.API.Services
         private readonly SignInManager<Usuario> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
-        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly MyIdentityDBContext _context;
 
-        public AuthenticationServices(UserManager<Usuario> userManager, SignInManager<Usuario> signInManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration, IHttpContextAccessor httpContextAccessor, MyIdentityDBContext context)
+        public AuthenticationServices(UserManager<Usuario> userManager, SignInManager<Usuario> signInManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration, MyIdentityDBContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
             _configuration = configuration;
-            _httpContextAccessor = httpContextAccessor;
             _context = context;
         }
 
@@ -50,7 +48,7 @@ namespace Authentication.API.Services
 
             if (result.Succeeded)
             {
-                await _userManager.AddToRoleAsync(usuario, "usuario");
+                await _userManager.AddToRoleAsync(usuario, "Usuario");
 
                 var token = GenerateJwtToken(usuario);
 
@@ -144,10 +142,15 @@ namespace Authentication.API.Services
 
             var roles = _userManager.GetRolesAsync(usuario).Result;
 
-            if (roles.Any())
+            if (roles.Contains("Administrador"))
             {
-                claims.Add(new Claim(ClaimTypes.Role, roles.First()));
+                claims.Add(new Claim(ClaimTypes.Role, "Administrador"));
             }
+            else if (roles.Contains("Usuario"))
+            {
+                claims.Add(new Claim(ClaimTypes.Role, "Usuario"));
+            }
+
 
             var secretKey = _configuration["JwtSettings:SecretKey"];
             var issuer = _configuration["JwtSettings:Issuer"];
